@@ -2,9 +2,9 @@ import { getRepository, Repository } from "typeorm";
 
 import { ICreateBatteryDTO } from "../../dtos/ICreateBatteryDTO";
 import { Battery } from "../../entities/Battery";
-import { IBatteryRepository } from "../interface/IBatteryRepository";
+import { IBatterysRepository } from "../interface/IBatterysRepository";
 
-class BatteryRepository implements IBatteryRepository {
+class BatterysRepository implements IBatterysRepository {
   private repository: Repository<Battery>;
 
   constructor() {
@@ -18,4 +18,4 @@ class BatteryRepository implements IBatteryRepository {
   }
 }
 
-export { BatteryRepository };
+export { BatterysRepository };

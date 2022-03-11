@@ -1,7 +1,7 @@
 import { ICreateBatteryDTO } from "../../dtos/ICreateBatteryDTO";
 
-interface IBatteryRepository {
+interface IBatterysRepository {
   create(batteryRequest: ICreateBatteryDTO): Promise<void>;
 }
 
-export { IBatteryRepository };
+export { IBatterysRepository };
