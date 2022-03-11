@@ -1,9 +1,9 @@
 import { Router } from "express";
 
-import { nameExaplesRoutes } from "./nameExaples.routes";
+import { BatterysRoutes } from "./batterys.routes";
 
 const router = Router();
 
-router.use("/nameExaples", nameExaplesRoutes);
+router.use("/nameExaples", BatterysRoutes);
 
 export { router };
