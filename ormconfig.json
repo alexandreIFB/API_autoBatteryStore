@@ -2,7 +2,16 @@
   "type": "postgres",
   "host": "localhost",
   "username": "docker",
-  "password": "ignite",
-  "database": "rentx",
-  "port": 5432
+  "password": "battery123",
+  "database": "battery_store",
+  "port": 5432,
+  "migrations": [
+    "./src/database/migrations/*.ts"
+  ],
+  "entities": [
+    "./src/modules/**/entities/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "./src/database/migrations"
+  }
 }
