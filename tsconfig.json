@@ -9,14 +9,6 @@
     "rootDir": "./src",
     "esModuleInterop": true, 
     "forceConsistentCasingInFileNames": true, 
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@controllers/*": ["./src/controllers/*"],
-      "@models/*": ["./src/models/*"],
-      "@views/*": ["./src/views/*"],
-      "@config/*": ["./src/config/*"],
-      "@services/*": ["./src/services/*"],
-    } 
+    "skipLibCheck": true
   }
 }

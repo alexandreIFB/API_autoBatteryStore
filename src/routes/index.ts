@@ -4,6 +4,6 @@ import { BatterysRoutes } from "./batterys.routes";
 
 const router = Router();
 
-router.use("/nameExaples", BatterysRoutes);
+router.use("/batterys", BatterysRoutes);
 
 export { router };
