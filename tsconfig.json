@@ -6,7 +6,7 @@
     "emitDecoratorMetadata": true, 
     "resolveJsonModule": true, 
     "outDir": "./dist",
-    "rootDir": "./src",
+    //"rootDir": "./src",
     "esModuleInterop": true, 
     "forceConsistentCasingInFileNames": true, 
     "skipLibCheck": true

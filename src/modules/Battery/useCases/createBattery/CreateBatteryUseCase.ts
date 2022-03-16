@@ -1,27 +1,26 @@
 import { inject, injectable } from "tsyringe";
 
+import { AppError } from "../../../../errors/AppError";
 import { ICreateBatteryDTO } from "../../dtos/ICreateBatteryDTO";
-import { IBatterysRepository } from "../../repositories/interface/IBatterysRepository";
+import { IBatteriesRepository } from "../../repositories/interface/IBatteriesRepository";
 
 @injectable()
 class CreateBatteryUseCase {
   constructor(
     @inject("BatterysRepository")
-    private batterysRepository: IBatterysRepository
+    private batteriesRepository: IBatteriesRepository
   ) {}
 
   async execute(batteryParams: ICreateBatteryDTO): Promise<void> {
-    const { c20_ah, cca_a, code, polarity, rc_min, warrantly_m } =
-      batteryParams;
+    const categoryAlreadyExist = await this.batteriesRepository.findOneByParams(
+      batteryParams
+    );
 
-    await this.batterysRepository.create({
-      c20_ah,
-      cca_a,
-      code,
-      polarity,
-      rc_min,
-      warrantly_m,
-    });
+    if (categoryAlreadyExist) {
+      throw new AppError("Battery Already Exists", 400);
+    }
+
+    await this.batteriesRepository.create(batteryParams);
   }
 }
 

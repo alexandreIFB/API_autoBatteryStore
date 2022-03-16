@@ -1,9 +1,9 @@
 import { container } from "tsyringe";
 
-import { BatterysRepository } from "../../modules/Battery/repositories/implementation/BatterysRepository";
-import { IBatterysRepository } from "../../modules/Battery/repositories/interface/IBatterysRepository";
+import { BatteriesRepository } from "../../modules/Battery/repositories/implementation/BatteriesRepository";
+import { IBatteriesRepository } from "../../modules/Battery/repositories/interface/IBatteriesRepository";
 
-container.registerSingleton<IBatterysRepository>(
-  "BatterysRepository",
-  BatterysRepository
+container.registerSingleton<IBatteriesRepository>(
+  "BatteriesRepository",
+  BatteriesRepository
 );
