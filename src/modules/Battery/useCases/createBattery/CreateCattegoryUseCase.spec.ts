@@ -25,7 +25,7 @@ describe("Create Battery", () => {
 
     await createBatteryUseCase.execute(batteryParams);
 
-    const batteryCreated = await batteriesRepositoryInMemory.findOneByParams(
+    const batteryCreated = await batteriesRepositoryInMemory.findOne(
       batteryParams
     );
 
@@ -72,7 +72,7 @@ describe("Create Battery", () => {
 
     await createBatteryUseCase.execute(batteryParamsTwo);
 
-    const batteryCreated = await batteriesRepositoryInMemory.findOneByParams(
+    const batteryCreated = await batteriesRepositoryInMemory.findOne(
       batteryParamsTwo
     );
     expect(batteryCreated).toHaveProperty("id");

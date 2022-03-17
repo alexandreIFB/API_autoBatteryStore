@@ -7,12 +7,12 @@ import { IBatteriesRepository } from "../../repositories/interface/IBatteriesRep
 @injectable()
 class CreateBatteryUseCase {
   constructor(
-    @inject("BatterysRepository")
+    @inject("BatteriesRepository")
     private batteriesRepository: IBatteriesRepository
   ) {}
 
   async execute(batteryParams: ICreateBatteryDTO): Promise<void> {
-    const categoryAlreadyExist = await this.batteriesRepository.findOneByParams(
+    const categoryAlreadyExist = await this.batteriesRepository.findOne(
       batteryParams
     );
 

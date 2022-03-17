@@ -2,7 +2,11 @@ import { getRepository, Repository } from "typeorm";
 
 import { ICreateBatteryDTO } from "../../dtos/ICreateBatteryDTO";
 import { Battery } from "../../entities/Battery";
-import { IBatteriesRepository } from "../interface/IBatteriesRepository";
+import {
+  IBatteriesRepository,
+  IBatteryFilter,
+  IWhereFilter,
+} from "../interface/IBatteriesRepository";
 
 class BatteriesRepository implements IBatteriesRepository {
   private repository: Repository<Battery>;
@@ -17,22 +21,14 @@ class BatteriesRepository implements IBatteriesRepository {
     await this.repository.save(battery);
   }
 
-  async findOneByParams({
-    c20_ah,
-    cca_a,
-    code,
-    polarity,
-    rc_min,
-    warrantly_m,
-  }: ICreateBatteryDTO): Promise<Battery> {
-    const battery = await this.repository.findOne({
-      c20_ah,
-      cca_a,
-      code,
-      polarity,
-      rc_min,
-      warrantly_m,
-    });
+  async findOne(batteryParams: IBatteryFilter): Promise<Battery | undefined> {
+    const battery = await this.repository.findOne(batteryParams);
+
+    return battery;
+  }
+
+  async findByParams(where: IWhereFilter): Promise<Battery[] | undefined> {
+    const battery = await this.repository.find(where);
 
     return battery;
   }
