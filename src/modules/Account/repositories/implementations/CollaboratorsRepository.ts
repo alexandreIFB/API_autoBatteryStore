@@ -16,6 +16,12 @@ class CollaboratorsRepository implements ICollaboratorsRepository {
 
     await this.repository.save(collaborator);
   }
+
+  async findOne(cpf: string): Promise<Collaborator> {
+    const collaborator = await this.repository.findOne({ cpf });
+
+    return collaborator;
+  }
 }
 
 export { CollaboratorsRepository };
