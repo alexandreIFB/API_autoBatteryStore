@@ -22,6 +22,12 @@ class CollaboratorsRepository implements ICollaboratorsRepository {
 
     return collaborator;
   }
+
+  async findById(id: string): Promise<Collaborator> {
+    const collaborator = await this.repository.findOne(id);
+
+    return collaborator;
+  }
 }
 
 export { CollaboratorsRepository };

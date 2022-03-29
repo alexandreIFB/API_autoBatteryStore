@@ -9,9 +9,12 @@ class CreateSessionController {
 
     const createSessionUseCase = container.resolve(CreateSessionUseCase);
 
-    await createSessionUseCase.execute({ cpf, password });
+    const responseReturn = await createSessionUseCase.execute({
+      cpf,
+      password,
+    });
 
-    return response.sendStatus(200);
+    return response.status(201).json(responseReturn);
   }
 }
 
