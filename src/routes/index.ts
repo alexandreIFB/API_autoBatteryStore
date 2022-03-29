@@ -10,6 +10,6 @@ router.use("/batteries", BatteriesRoutes);
 
 router.use("/collaborators", CollaboratorsRoutes);
 
-router.use("/authenticate", AuthenticateRoutes);
+router.use("/session", AuthenticateRoutes);
 
 export { router };
