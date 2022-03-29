@@ -18,6 +18,9 @@ class Collaborator {
   @Column()
   password: string;
 
+  @Column()
+  admin: boolean;
+
   @CreateDateColumn()
   created_at: Date;
 
