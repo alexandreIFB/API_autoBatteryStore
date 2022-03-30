@@ -158,6 +158,52 @@
           }
         }
       }
+    },
+    "/collaborators": {
+      "post": {
+        "tags": [
+          "Collaborator"
+        ],
+        "summary": "Create a collaborator",
+        "description": "Create a new collaborator",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "telNumber": {
+                    "type": "string"
+                  },
+                  "cpf": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "name": "Alexandre Abreu", 
+                "telNumber": "61991935209",
+                "password": "xandin1234",
+                "cpf": "421455161"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Collborator With CPF Already Exists"
+          }
+        }
+      }
     }
   }
 }
