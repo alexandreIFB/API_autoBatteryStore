@@ -14,7 +14,7 @@ class CreateSessionController {
       password,
     });
 
-    return response.status(201).json(responseReturn);
+    return response.status(200).json(responseReturn);
   }
 }
 

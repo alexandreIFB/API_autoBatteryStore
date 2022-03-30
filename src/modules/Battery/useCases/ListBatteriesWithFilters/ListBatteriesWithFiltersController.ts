@@ -4,7 +4,7 @@ import { container } from "tsyringe";
 import { IWhereFilter } from "../../repositories/interface/IBatteriesRepository";
 import { ListBatteriesWithFiltersUseCase } from "./ListBatteriesWithFiltersUseCase";
 
-function montaWhere(query) {
+function mountWhere(query) {
   const { c20_ah, cca_a, code, polarity, rc_min, warrantly_m } = query;
   const where: IWhereFilter = {};
   if (c20_ah) where.c20_ah = +c20_ah;
@@ -19,7 +19,7 @@ function montaWhere(query) {
 
 class ListBatteriesWithFiltersController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const where = montaWhere(request.query);
+    const where = mountWhere(request.query);
 
     const listBatteriesWithFiltersUseCase = container.resolve(
       ListBatteriesWithFiltersUseCase

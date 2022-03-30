@@ -8,31 +8,52 @@
       "email": "abreuxandi2010@gmail.com"
     }
   },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": { "type": "http", "scheme": "bearer", "bearerFormat": "JWT" }
+    }
+  },
   "paths": {
-    "/categories": {
+    "/batteries": {
       "post": {
         "tags": [
-          "Category"
+          "Battery"
         ],
-        "summary": "Create a category",
-        "description": "Create a new category",
+        "summary": "Create a battery",
+        "description": "Create a new battery, collaborator admin permision required",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
+                  "c20_ah": {
+                    "type": "number"
+                  },
+                  "polarity": {
                     "type": "string"
                   },
-                  "description": {
+                  "cca_a": {
+                    "type": "number"
+                  },
+                  "rc_min": {
+                    "type": "number"
+                  },
+                  "warrantly_m": {
+                    "type": "number"
+                  },
+                  "code": {
                     "type": "string"
                   }
                 }
               },
               "example": {
-                "name": "SUV",
-                "description": "SUV description category"
+                "c20_ah": 50,
+                "polarity": "D/E",
+                "cca_a": 60,
+                "rc_min":60,
+                "warrantly_m": 12,
+                "code": "M50JD"
               }
             }
           }
@@ -41,17 +62,24 @@
           "201": {
             "description": "Created"
           },
-          "500": {
-            "description": "Category already exist"
+          "400": {
+            "description": "Category battery exist"
+          },
+          "401": {
+            "description": "Token invalid"
+          },
+          "403": {
+            "description": "Collaborator not allowed for this action"
           }
-        }
+        },
+        "security": [{ "bearerAuth": [] }]
       },
       "get": {
         "tags": [
-          "Category"
+          "Battery"
         ],
-        "summary": "List categories",
-        "description": "List all categories",
+        "summary": "Collaborators authenticated list all batteries",
+        "description": "List all batteries",
         "responses": {
           "200": {
             "description": "Sucess",
@@ -62,10 +90,22 @@
                   "items": {
                     "type": "object",
                     "properties": {
-                      "name": {
+                      "c20_ah": {
+                        "type": "number"
+                      },
+                      "polarity": {
                         "type": "string"
                       },
-                      "description": {
+                      "cca_a": {
+                        "type": "number"
+                      },
+                      "rc_min": {
+                        "type": "number"
+                      },
+                      "warrantly_m": {
+                        "type": "number"
+                      },
+                      "code": {
                         "type": "string"
                       }
                     }
@@ -74,8 +114,47 @@
               }
             }
           },
-          "500": {
-            "description": "Category already exist"
+          "401": {
+            "description": "Token invalid"
+          }
+        },
+        "security": [{ "bearerAuth": [] }]
+      }
+    },
+    "/sessions": {
+      "post": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "Create a session",
+        "description": "Create a new session JWT",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cpf": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "password": "xandin1234",
+	              "cpf": "421455161"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sucess"
+          },
+          "400": {
+            "description": "CPF or Password not valid"
           }
         }
       }
