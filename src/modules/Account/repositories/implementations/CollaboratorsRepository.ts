@@ -28,6 +28,10 @@ class CollaboratorsRepository implements ICollaboratorsRepository {
 
     return collaborator;
   }
+
+  async turnAdmin(collaborator: Collaborator): Promise<void> {
+    await this.repository.save(collaborator);
+  }
 }
 
 export { CollaboratorsRepository };

@@ -204,6 +204,42 @@
           }
         }
       }
+    },
+    "/collaborators/{cpf}/admin": {
+      "patch": {
+        "tags": [
+          "Collaborator"
+        ],
+        "summary": "Turn Collaborator Admin",
+        "description": "Turn Collaborator Admin",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "description": "CPF of turn admin",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucess"
+          },
+          "400": {
+            "description": "Collaborator not exist"
+          },
+          "401": {
+            "description": "Token invalid"
+          },
+          "403": {
+            "description": "Collaborator not allowed for this action"
+          }
+        },
+        "security": [{ "bearerAuth": [] }]
+      }
     }
   }
 }
